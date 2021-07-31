@@ -1,0 +1,81 @@
+{% extends 'base.html' %} {% block title %}멋사 9기 김채은을 소개합니다{% endblock %} {% block contents %}
+<main class="l-main">
+    <!--===== HOME =====-->
+    <section class="home" id="home">
+        <div class="home__container bd-grid">
+            <h1 class="home__title"><span>{{home.greetings_1}}</span><br><br>{{home.greetings_2}}</h1>
+
+            <div class="home__scroll">
+                <a href="#about" class="home__scroll-link"><i class='bx bx-up-arrow-alt' ></i>Scroll down</a>
+            </div>
+
+            <img src="{{home.picture.url}}" alt="" class="home__img">
+        </div>
+    </section>
+
+    <!--===== ABOUT ME =====-->
+    <section class="about section" id="about">
+        <h2 class="section-title">About ME</h2>
+
+        <div class="about__container bd-grid">
+            <div class="about__img" style="bottom: 0;">
+                <img src="{{about.profile_img.url}}" alt="과잠입은 프로필 사진">
+            </div>
+
+            <div>
+                <h2 class="about__subtitle">{{about.heading}}</h2>
+                <span class="about__profession">{{about.career}}</span>
+                <p class="about__text">{{about.description}}
+                </p>
+
+                <div class="about__social">
+                    <!--github link-->
+                    <a target="_blank" href="https://github.com/kimchaeeun3447" class="about__social-icon"><i class='bx bxl-github' ></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--===== CONTACT =====-->
+    <section class="contact section" id="contact">
+        <h2 class="section-title">Contact Me</h2>
+        <div class="contact__container bd-grid">
+            <div class="contact__info">
+                <h3 class="contact__subtitle" style="font-size: 1.5rem;">EMAIL</h3>
+                <span class="contact__text" style="font-size: 1.5rem;">rlacodms3447@gmail.com</span>
+                <h3 class="contact__subtitle" style="font-size: 1.5rem;">ADRESS</h3>
+                <span class="contact__text" style="font-size: 1.5rem;">일산</span>
+
+            </div>
+        </div>
+
+        <h2 class="section-title">방명록</h2>
+        <h5 style="text-align: center;">심심하시면 방명록을 남겨주세요!</h5>
+
+        {% for comment in comments%}
+
+        <div class="about__container bd-grid" style="position: sticky; margin-bottom: -5rem;">
+            <div style="border: 1px solid rgb(197, 196, 196); border-radius: 2%; padding: 5px; width: 120rem;">
+                <span class="about__profession">{{comment.writer}}</span>
+                <p class="about__text">{{comment.content}}</p>
+            </div>
+
+        </div>
+
+        {%endfor%}
+        <div class="about__container bd-grid" style="position: sticky;">
+            <form action="{%url 'comment'%}" method="post">
+                <div>
+                    {%csrf_token%}
+                    <label for="writer" style="font-size: 2rem;"> Name</label>
+                    <input id="writer" type="text" name="writer" style="font-size: 2rem; margin-left: 22px;"><br>
+
+                    <label for="content" style="font-size: 2rem;"> Content</label>
+                    <textarea id="content" name="content" cols="100" rows="5" style="font-size: 2rem;"></textarea>
+                    <button type="submit" style="font-size: 3rem;float: right; border: none; border-radius: 5px;  padding: 5px;background-color: lavender;">enter</button>
+                </div>
+            </form>
+        </div>
+    </section>
+</main>
+{% endblock %}

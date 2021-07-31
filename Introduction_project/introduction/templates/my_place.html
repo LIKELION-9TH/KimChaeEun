@@ -1,0 +1,14 @@
+{% extends 'base.html' %} {% block title %}내가 좋아하는 장소{% endblock %} {% block contents %}
+<!--===== Place =====-->
+<section class="skills section" id="skills" style="height: 100%;">
+    <h2 class="section-title">My favorite Places</h2>
+    <div class="skills__container bd-grid">
+        <div class="skills__box">
+            {% for category in categories %}
+            <h3 class="skills__subtitle">{{category.name}}</h3>
+            {% for place in category.skills_set.all %}
+            <span class="skills__name">{{place.skill_name}}</span> {%endfor%} {%endfor%}
+        </div>
+    </div>
+</section>
+{% endblock %}

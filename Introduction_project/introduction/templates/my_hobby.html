@@ -1,0 +1,18 @@
+{% extends 'base.html' %} {% block title %}나의 취미{% endblock %} {% block contents %}
+<!--===== 내 취미 =====-->
+<section class="portfolio section" id="portfolio">
+    <h2 class="section-title">My hobby</h2>
+    <div class="portfolio__container bd-grid">
+        {% for hobby in hobbies%}
+        <div class="portfolio__img">
+            <img src="{{hobby.image.url}}">
+            <div>
+                <h2 class="about__subtitle" style="text-align: center;font-size: 2.5rem;color: rgb(144, 130, 150);">{{hobby.name}}</h2>
+                <p class="about__text" style="font-size: 1.5rem;">{{hobby.description}}</p>
+
+            </div>
+        </div>
+        {%endfor%}
+    </div>
+</section>
+{% endblock %}

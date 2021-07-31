@@ -1,0 +1,21 @@
+{% extends 'base.html' %} {% block title %}나의 음악{% endblock %} {% block contents %}
+<!--===== 내가 좋아하는 음악 =====-->
+<section class="portfolio section" id="portfolio">
+    <h2 class="section-title">My favorite Music</h2>
+
+    <div class="portfolio__container bd-grid" style="margin-bottom: 5rem;">
+        {% for music in musics%}
+        <div class="portfolio__img" style="border: 1px solid rgb(187, 187, 187); border-radius: 3%; padding: 2rem;">
+            <img src="{{music.image.url}}">
+            <div>
+                <h2 class="about__subtitle" style="text-align: center;font-size: 2.2rem;color: rgb(51, 51, 51);">{{music.singer}} - {{music.title}}</h2>
+                <p class="about__text" style="font-size: 1.5rem;">{{music.description}}</p>
+            </div>
+            <div>
+                <a target="_blank" href="{{music.link}}" style="float: right;"><i class="fab fa-youtube fa-2x"></i></a>
+            </div>
+        </div>
+        {%endfor%}
+    </div>
+</section>
+{% endblock %}
