@@ -25,6 +25,24 @@ def comment(request):
 
     return redirect('index')
 
+def update(request, comment_id):
+    if request.method == 'POST':
+        comment = Comment.objects.get(id=comment_id)
+        comment.writer = request.POST['writer']
+        comment.content = request.POST['content']
+        comment.write_date = timezone.now()
+        comment.save()
+        return redirect('index')
+    else:
+        comment = Comment.objects.get(id=comment_id)
+        return render(request, 'update_comment.html', {'comment':comment})
+        
+def delete(request, comment_id):
+    if request.method == 'POST':
+        comment = Comment.objects.get(id=comment_id)
+        comment.delete()
+        return redirect('index')
+
 def picture(request):
     pictures = Portfolio.objects.all()
     return render(request, 'my_pictures.html', {'pictures' : pictures})

@@ -26,7 +26,9 @@ urlpatterns = [
     path('place/', views.place, name='place'),
     path('hobby/', views.hobby, name='hobby'),
     path('music/', views.music, name='music'),
-    path('comment/', views.comment, name='comment')
+    path('comment/', views.comment, name='comment'),
+    path('update/<int:comment_id>', views.update, name='update'),
+    path('delete/<int:comment_id>', views.delete, name='delete')
 ] 
 #admin에서 사진을 눌렀을때 사진의 위치를 알고 띄울수있음
 if settings.DEBUG:

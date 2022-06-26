@@ -8,8 +8,6 @@
             <div class="home__scroll">
                 <a href="#about" class="home__scroll-link"><i class='bx bx-up-arrow-alt' ></i>Scroll down</a>
             </div>
-
-            <img src="{{home.picture.url}}" alt="" class="home__img">
         </div>
     </section>
 
@@ -58,6 +56,17 @@
             <div style="border: 1px solid rgb(197, 196, 196); border-radius: 2%; padding: 5px; width: 120rem;">
                 <span class="about__profession">{{comment.writer}}</span>
                 <p class="about__text">{{comment.content}}</p>
+
+                <form action="{% url 'update' comment.id %}" method="get">
+                    {%csrf_token%}
+                    <input type="submit" class="update_btn" name="update_btn" style="float: right; font-size: large;" value="수정">
+                </form>
+
+                <form action="{% url 'delete' comment.id %}" method="post">
+                    {%csrf_token%}
+                    <input type="submit" class="del_btn" name="del_btn" style="float: right; font-size: large;" value="삭제">
+
+                </form>
             </div>
 
         </div>

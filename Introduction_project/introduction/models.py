@@ -8,7 +8,7 @@ class Home(models.Model):
     name = models.CharField(max_length=20)
     greetings_1 = models.CharField(max_length=20)
     greetings_2 = models.CharField(max_length=20)
-    picture = models.ImageField(upload_to='picture/')
+    picture = models.ImageField(upload_to='picture/', blank=True)
     updated = models.DateTimeField(auto_now=True)
 
     def __str__(self):
